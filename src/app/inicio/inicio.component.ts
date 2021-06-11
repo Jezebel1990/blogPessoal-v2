@@ -21,7 +21,7 @@ export class InicioComponent implements OnInit {
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
-
+ 
   user: User = new User()
   idUser = environment.id
 
