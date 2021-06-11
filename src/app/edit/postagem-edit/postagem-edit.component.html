@@ -21,7 +21,7 @@
             
             <div class="form-group">
                 <label for="texto">Escolha um tema ou <a data-dismiss="modal" routerLink='/tema'>cadastre um novo</a>: </label>
-                <select name="tema" id="tema" class="form-control"[(ngModel)]='idTema'(change)='findByIdTema()'>
+                <select name="tema" id="tema" class="form-control"[(ngModel)]='idTema' (change) ='findByIdTema()'>
                 <option *ngFor='let item of listaTemas' value="{{item.id}}">
                     {{item.descricao}}
                 </option>
@@ -29,8 +29,11 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-danger mr-4" routerLink='/inicio'>Cancelar</button>
-                    <button class="btn btn-success" (click)='atualizar()'>Atualizar<button> 
-                        <div>
+                 <button class="btn btn-danger mr-4" routerLink='/inicio'>Cancelar</button>
+                 <button class="btn btn-success" (click)='atualizar()'>Atualizar</button>
+                </div>
 
-                    </div>
+            </div>
+            </div>
+
+        </div>

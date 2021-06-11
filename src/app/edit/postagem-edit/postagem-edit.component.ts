@@ -14,19 +14,22 @@ import { environment } from 'src/environments/environment.prod';
 export class PostagemEditComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
-  
+
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
-
+  
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private postagemService: PostagemService,
     private temaService: TemaService
-  ) { }
+   ) { }
 
   ngOnInit() {
+
+   window.scroll(0,0)
+
     if(environment.token == ''){
       this.router.navigate(['/entrar'])
     }
@@ -51,7 +54,7 @@ export class PostagemEditComponent implements OnInit {
   findAllTemas(){
   this.temaService.getAllTema().subscribe((resp: Tema[]) =>{
      this.listaTemas = resp
-  } )
+  })
 }
 
 atualizar(){
@@ -64,4 +67,5 @@ atualizar(){
     this.router.navigate(['/inicio'])
     })
   }
+
 }
