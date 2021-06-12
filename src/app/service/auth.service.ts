@@ -29,10 +29,20 @@ export class AuthService {
     getByIdUser(id: number): Observable<User>{
       return this.http.get<User>(`https://blogpessoaldabell.herokuapp.com/usuarios/${id}`)
     }
+
+
     logado(){
       let ok: boolean = false
 
       if(environment.token != ''){
+        ok = true
+      }
+      return ok
+    }
+    adm(){
+      let ok: boolean = false
+
+      if(environment.tipo == 'adm'){
         ok = true
       }
       return ok

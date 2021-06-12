@@ -14,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
+
 export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
@@ -90,23 +91,25 @@ export class InicioComponent implements OnInit {
       this.getAllPostagens()
     })
   }
-findByTituloPostagem(){
 
-if(this.tituloPost == ''){
-  this.getAllPostagens()
-} else {
-  this.postagemService.getByTituloPostagem(this.tituloPost).subscribe((resp: Postagem[]) => {
-    this.listaPostagens = resp
-  })
-}
-}
-findByNomeTema(){
-  if(this.nomeTema == ''){
-    this.getAllTemas()
-  } else {
-   this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[]) => {
-     this.listaTemas = resp
-   })
-}
-}
+  findByTituloPostagem(){
+    if(this.tituloPost == ''){
+      this.getAllPostagens()
+    } else {
+      this.postagemService.getByTituloPostagem(this.tituloPost).subscribe((resp: Postagem[]) => {
+        this.listaPostagens = resp
+      })
+    }
+  }
+
+  findByNomeTema(){
+    if(this.nomeTema == ''){
+      this.getAllTemas()
+    } else {
+      this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[]) => {
+        this.listaTemas = resp
+      })
+    }
+  }
+
 }
