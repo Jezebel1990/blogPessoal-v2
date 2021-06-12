@@ -1,10 +1,10 @@
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { UserLogin } from './../model/UserLogin';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../model/User';
-import { environment } from 'src/environments/environment.prod';
-
 
 
 @Injectable({
@@ -13,7 +13,8 @@ import { environment } from 'src/environments/environment.prod';
 export class AuthService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router:Router
   ) { }
 
   entrar(userLogin: UserLogin): Observable<UserLogin>{
@@ -26,12 +27,22 @@ export class AuthService {
     }
 
     getByIdUser(id: number): Observable<User>{
-      return this.http.get<User>('https://blogpessoaldabell.herokuapp.com/usuarios/${id')
+      return this.http.get<User>(`https://blogpessoaldabell.herokuapp.com/usuarios/${id}`)
     }
+
+
     logado(){
       let ok: boolean = false
 
       if(environment.token != ''){
+        ok = true
+      }
+      return ok
+    }
+    adm(){
+      let ok: boolean = false
+
+      if(environment.tipo == 'adm'){
         ok = true
       }
       return ok

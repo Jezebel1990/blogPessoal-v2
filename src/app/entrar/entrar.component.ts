@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AlertasService } from '../service/alertas.service';
 import { environment } from 'src/environments/environment.prod';
-import { UserLogin } from '../model/UserLogin';
+import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { UserLogin } from '../model/UserLogin';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-entrar',
@@ -12,6 +13,7 @@ import { AuthService } from '../service/auth.service';
 export class EntrarComponent implements OnInit {
 
   userLogin: UserLogin = new UserLogin()
+  alertas: any;
   constructor(
     private auth: AuthService,
     private router: Router
@@ -28,16 +30,12 @@ export class EntrarComponent implements OnInit {
       environment.nome = this.userLogin.nome
       environment.foto = this.userLogin.foto
       environment.id = this.userLogin.id
-
-//console.log(environment.token)//
-//console.log(environment.nome)//
-//console.log(environment.foto)//
-//console.log(environment.id)//
+      environment.tipo = this.userLogin.tipo
 
       this.router.navigate(['/inicio'])
     },erro =>{
-      if(erro.status ==500){
-        alert('Usuario ou senha estão incorretos!')
+      if(erro.status == 500){
+        this.alertas.showAlertDanger('Usuario ou senha estão incorretos!')
       }
     })
 
