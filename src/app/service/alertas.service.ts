@@ -7,14 +7,17 @@ import { AlertasComponent } from '../alertas/alertas.component';
   providedIn: 'root'
 })
 export class AlertasService {
+  showAlertSuccess(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(
     private bsModalService: BsModalService
   ) { }
 
-  private showAlert(message: string, tipo: string){
+  private showAlert(message: string, type: string){
    const bsModalRef: BsModalRef = this.bsModalService.show(AlertasComponent)
-   bsModalRef.content.type = tipo 
+   bsModalRef.content.type = type
    bsModalRef.content.message = message
     }
     showAlertDanger(message: string){

@@ -12,8 +12,7 @@
 
          <div class="row d-flex justify-content-center mt-3 mb-5">
             <div class="col-md-6">
-                <button class="btn btn-light mr-2"data-toggle="modal" 
-                data-target="#novaPostagem">Nova Postagem</button>
+                <button class="btn btn-light mr-2" data-toggle="modal" data-target="#novaPostagem">Nova Postagem</button>
                 <a class="btn btn-outline-light" href="#postagens">Ver Postagens</a>
          </div>
         </div>
@@ -47,7 +46,8 @@
         <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
       
          <div class="card-columns">
-          <div class="card text-center" *ngFor='let item of listaPostagens'>
+          <div class="card text-center" 
+          *ngFor='let item of listaPostagens | orderBy : Key : reverse'>
             <div class="card-body">
               <h5 class="card-title m-0">{{item.titulo}}</h5>
               <small class="text-muted ">Tema: {{item.tema.descricao}}</small>
@@ -69,7 +69,7 @@
         aria-labelledby="nav-minhasPostagens-tab">
       
         <div class="card-columns">
-          <div class="card text-center" *ngFor='let item of user.postagem'>
+          <div class="card text-center" *ngFor='let item of user.postagem | orderBy : Key : reverse'>
             <div class="card-body">
               <h5 class="card-title m-0">{{item.titulo}}</h5>
               <small class="text-muted "> Tema: {{item.tema.descricao}}</small>
@@ -89,7 +89,7 @@
         <div class="tab-pane fade" id="postagemTema" role="tabpanel" aria-labelledby="nav-postagemTema-tab">
 
         <div class="card-columns" *ngFor='let tema of listaTemas'>
-          <div class="card text-center" *ngFor='let item of tema.postagem'>
+          <div class="card text-center" *ngFor='let item of tema.postagem | orderBy : Key : reverse'>
             <div class="card-body">
               <h5 class="card-title m-0">{{item.titulo}}</h5>
               <p class="card-text mt-3">{{item.texto}}</p>
